@@ -17,11 +17,26 @@ $app->get('/test/{action}', function ($request, $response, $args) {
             echo "session_destroy";
             break;
 
+        case "post":
+            $url = 'http://localhost/member';
+            $data = array('account' => '123', 'password' => '23123');
+
+            // use key 'http' even if you send the request to https://...
+            $options = array(
+                'http' => array(
+                    'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method'  => 'POST',
+                    'content' => http_build_query($data)
+                )
+            );
+            $context  = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            if ($result === FALSE) { /* Handle error */ }
+            var_dump($result);
+            break;
+
         case "faker":
             $db = getDB();
-
-
-
             for ($i=0;$i<100;$i++){
 
                 $shop_id = time().uniqid("s");
@@ -76,6 +91,10 @@ $app->get('/admin/logout', function ($request, $response, $args) {
     redirect("/");
 });
 
+$app->post('/member', function ($request, $response, $args) {
+    return controller('member',$this)->run('post');
+
+});
 
 //FOR API USE ONLY
 $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) {

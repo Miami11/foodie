@@ -52,7 +52,7 @@ class loginController
             redirect("/admin/login","無此帳號");
         }
 
-        if($password == $data[0]['password']){
+        if(md5($password) == $data[0]['password']){
             getLoginHelper()->setLogin($account);
             redirect("/admin");
         }else{
