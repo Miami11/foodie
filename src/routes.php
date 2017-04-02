@@ -49,4 +49,8 @@ $app->post('/admin/login', function ($request, $response, $args) {
 //    return controller('admin',$this)->run("login");
 });
 
+$app->get('/admin/logout', function ($request, $response, $args) {
+    getLoginHelper()->logout();
+    redirect("/");
+});
 
