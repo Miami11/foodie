@@ -57,3 +57,27 @@ class Login{
         }
     }
 }
+
+function unicode_shuffle($string, $chars, $format = 'UTF-8')
+{
+    for($i=0; $i<$chars; $i++)
+        $rands[$i] = rand(0, mb_strlen($string, $format));
+
+    $s = NULL;
+
+    foreach($rands as $r)
+        $s.= mb_substr($string, $r, 1, $format);
+
+    return $s;
+}
+
+
+abstract class Action {
+    const SHOW = "show";
+    const ADD = "add";
+    const GET = "get";
+    const PAGE = "page";
+    const MODIFY = "modify";
+    const DELETE = "delete";
+    const SORT = "sort";
+}

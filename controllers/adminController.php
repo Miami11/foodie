@@ -2,7 +2,7 @@
 
 class adminController
 {
-    private $request, $response, $args, $view, $data;
+    private $request, $response, $view, $data;
 
     function __construct($data)
     {
@@ -11,7 +11,6 @@ class adminController
         $this->request = $data->request;
         $this->response = $data->response;
         $this->view = $data->view;
-        $this->args = $this->args;
     }
 
     function run($kind = "")

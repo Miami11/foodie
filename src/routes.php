@@ -17,10 +17,32 @@ $app->get('/test/{action}', function ($request, $response, $args) {
             echo "session_destroy";
             break;
 
-        case "log":
-//            var_dump($login->setLogin("mia"));
-//            var_dump($login->logout());
-//            var_dump($login->getIsLogged());
+        case "faker":
+            $db = getDB();
+
+
+
+            for ($i=0;$i<100;$i++){
+
+                $shop_id = time().uniqid("s");
+                $name_ch = unicode_shuffle("豬排魯麵飯大小雞菜湯魚牛羊排蝦羹",10);
+                $name_en = str_shuffle("shit");
+                $db->insert("shops", [
+                    "shop_id" => $shop_id,
+                    "name_ch" => $name_ch,
+                    "name_en" => $name_en,
+                    "image" => $shop_id.".png",
+                    "address" => "苗栗縣三灣鄉三灣村298號2弄15號",
+                    "phone" => "1978948741",
+                    "tags" => "{'炸物','滷味'}",
+                    "coupon" => "0",
+                    "shift" => "0",
+                    "rate" => "1"
+                ]);
+            }
+
+
+            break;
     }
 });
 
@@ -52,5 +74,12 @@ $app->post('/admin/login', function ($request, $response, $args) {
 $app->get('/admin/logout', function ($request, $response, $args) {
     getLoginHelper()->logout();
     redirect("/");
+});
+
+
+//FOR API USE ONLY
+$app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) {
+
+    return controller('interface',$this)->run($args);
 });
 
