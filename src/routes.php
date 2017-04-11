@@ -7,9 +7,9 @@ require_once '../lib/helper.php';
 $app->get('/test/{action}', function ($request, $response, $args) {
     $login = new Login();
 
-    if($_SERVER['REMOTE_ADDR'] != "127.0.0.1" && $_SERVER['REMOTE_ADDR'] != "::1"){
-        return;
-    }
+//    if($_SERVER['REMOTE_ADDR'] != "127.0.0.1" && $_SERVER['REMOTE_ADDR'] != "::1"){
+//        return;
+//    }
 
     switch ($args['action']) {
         case "killer":

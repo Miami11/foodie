@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+<div id="ajax"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script>
+    $.getJSON("http://localhost/api/shop/page/0", function(result){
+
+
+        for (var item in result) {
+
+            var obj =  $('#ajax');
+            obj.append("<p> 名稱: "+ result[item].name_ch+"</p>");
+            obj.append("<p> 地址: "+ result[item].address+"</p>");
+            obj.append("<p> 電話: "+ result[item].phone+"</p>");
+            obj.append("<hr>");
+
+        }
+
+
+    });
+
+</script>
+</body>
+</html>
