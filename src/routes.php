@@ -4,6 +4,11 @@ require_once '../lib/mysql.php';
 require_once '../lib/helper.php';
 
 //develop Tools only for localhost domain allow
+
+$app->get('/test', function ($request, $response, $args) {
+    return controller('test',$this)->run('post');
+});
+
 $app->get('/test/{action}', function ($request, $response, $args) {
     $login = new Login();
 
@@ -55,8 +60,6 @@ $app->get('/test/{action}', function ($request, $response, $args) {
                     "rate" => "1"
                 ]);
             }
-
-
             break;
     }
 });
@@ -65,7 +68,6 @@ $app->get('/test/{action}', function ($request, $response, $args) {
 $app->get('/api', function ($request, $response, $args){
     return json_encode(array('flag'=>0));
 });
-
 
 //首頁
 $app->get('/', function ($request, $response, $args){
@@ -101,8 +103,9 @@ $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) 
 
     return controller('interface',$this)->run($args);
 });
-$app->post('/api/{kind}/{action}/{value}', function ($request, $response, $args) {
 
+//for add shop
+$app->post('/api/{kind}/{action}', function ($request, $response, $args) {
     return controller('add',$this)->run($args);
 });
 

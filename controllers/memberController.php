@@ -29,7 +29,6 @@ class memberController
         $data = $db->query("INSERT INTO users (account, password)
         VALUES ($account, md5($password))")->fetchAll();
 
-
     }
 
 }

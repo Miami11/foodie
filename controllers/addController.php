@@ -1,6 +1,5 @@
 <?php
 
-
 class addController
 {
     private $request, $response, $view, $data;
@@ -16,19 +15,17 @@ class addController
 
     function run($action = "")
     {
-        switch ($action)
-        {
-
-            case "post":
-                $this->addInfo();
-                break;
-        }
+        $this->addInfo();
     }
 
     private function addInfo(){
         $db = getDB();
+
+        //test
+        var_dump($this->request->getParsedBody());
+
         //取得post傳入帳號密碼
-        $account = $this->request->getParsedBody()['id'];
+        $account = $this->request->getParsedBody()['shop_id'];
         $shop_id = $this->request->getParsedBody()['shop_id'];
         $name_ch = $this->request->getParsedBody()['name_ch'];
         $name_en = $this->request->getParsedBody()['name_en'];
@@ -37,8 +34,8 @@ class addController
         $image = $this->request->getParsedBody()['image'];
 
 
-        $data = $db->query("INSERT INTO shops (id,shop_id,name_ch,name_en,tags,phone,address,image)
-        VALUES ($account,$shop_id,$name_ch,$name_en,$tags,$phone,$image))")->fetchAll();
+//        $data = $db->query("INSERT INTO shops (id,shop_id,name_ch,name_en,tags,phone,address,image)
+//        VALUES ($account,$shop_id,$name_ch,$name_en,$tags,$phone,$image))")->fetchAll();
     }
 
 }
