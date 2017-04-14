@@ -101,4 +101,8 @@ $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) 
 
     return controller('interface',$this)->run($args);
 });
+$app->post('/api/{kind}/{action}/{value}', function ($request, $response, $args) {
+
+    return controller('add',$this)->run($args);
+});
 
