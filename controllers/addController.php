@@ -22,20 +22,36 @@ class addController
         $db = getDB();
 
         //test
-        var_dump($this->request->getParsedBody());
+//        var_dump($this->request->getParsedBody());
 
-        //取得post傳入帳號密碼
-        $account = $this->request->getParsedBody()['shop_id'];
+//        die();
+        //取得post傳入資料
+        //        var_dump($this->request->getParsedBody());
+//
+//        print_r($this->request->getParsedBody());
+//
+//        die();
+
         $shop_id = $this->request->getParsedBody()['shop_id'];
         $name_ch = $this->request->getParsedBody()['name_ch'];
         $name_en = $this->request->getParsedBody()['name_en'];
         $tags = $this->request->getParsedBody()['tags'];
+        $coupon = $this->request->getParsedBody()['coupon'];
+        $shift = $this->request->getParsedBody()['shift'];
+
         $phone = $this->request->getParsedBody()['phone'];
-        $image = $this->request->getParsedBody()['image'];
+
+//        $image = $this->request->getParsedBody()['image'];
+        $address = $this->request->getParsedBody()['address'];
+        $rate = $this->request->getParsedBody()['rate'];
+        $hours = $this->request->getParsedBody()['hours'];
+
+        $createTime = time();
+        $updateTime = time();
 
 
-//        $data = $db->query("INSERT INTO shops (id,shop_id,name_ch,name_en,tags,phone,address,image)
-//        VALUES ($account,$shop_id,$name_ch,$name_en,$tags,$phone,$image))")->fetchAll();
+        $data = $db->query("INSERT INTO shops (shop_id,name_ch,name_en,image,address,phone,tags,coupon,shift,rate,create_at,update_at ,hours)
+        VALUES ('$shop_id','$name_ch','$name_en','temp_image.jpg','$address','$phone','$tags','$coupon','$shift','$rate','$createTime','$updateTime','$hours')")->fetchAll();
     }
 
 }
