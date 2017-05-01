@@ -49,9 +49,16 @@ class addController
         $createTime = time();
         $updateTime = time();
 
+        $sql = "INSERT INTO shops (shop_id,name_ch,name_en,image,address,phone,tags,coupon,shift,rate,create_at,update_at ,hours)
+        VALUES ('$shop_id','$name_ch','$name_en','temp_image.jpg','$address','$phone','$tags','$coupon','$shift','$rate','$createTime','$updateTime','$hours')";
 
-        $data = $db->query("INSERT INTO shops (shop_id,name_ch,name_en,image,address,phone,tags,coupon,shift,rate,create_at,update_at ,hours)
-        VALUES ('$shop_id','$name_ch','$name_en','temp_image.jpg','$address','$phone','$tags','$coupon','$shift','$rate','$createTime','$updateTime','$hours')")->fetchAll();
+        if($db->query($sql)){
+            echo '{"flag":"1","msg":"新增成功"}';
+        }else{
+            echo '{"flag":"0","msg":"新增失敗"}';
+        }
+
     }
+
 
 }
