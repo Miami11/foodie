@@ -9,6 +9,8 @@ $app->get('/test', function ($request, $response, $args) {
     return controller('test',$this)->run('post');
 });
 
+
+
 $app->get('/test/{action}', function ($request, $response, $args) {
     $login = new Login();
 
@@ -74,6 +76,12 @@ $app->get('/', function ($request, $response, $args){
     return controller('home',$this)->run();
 });
 
+$app->get('/memIndex', function ($request, $response, $args) {
+    return controller('member',$this)->run();
+});
+
+
+
 $app->get('/admin', function ($request, $response, $args) {
     return controller('admin',$this)->run();
 });
@@ -97,6 +105,8 @@ $app->post('/member', function ($request, $response, $args) {
     return controller('member',$this)->run('post');
 
 });
+
+
 
 //FOR API USE ONLY
 $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) {

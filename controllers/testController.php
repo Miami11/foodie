@@ -14,9 +14,15 @@ class testController
     }
 
     function run(){
-        $db = getDB();
-        $this->response = $this->view->render($this->response, 'test.twig');
-        return $this->response;
+//        $db = getDB();
+//        $this->response = $this->view->render($this->response, 'test.twig');
+//        return $this->response;
+
+            $db = getDB();
+            $result = $db->select("users","*", [
+                "name" => "mia"]);
+            $this->response = $this->view->render($this->response, 'memIndex.twig',['data'=>$result]);
+
     }
 
 }

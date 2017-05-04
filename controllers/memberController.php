@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: Miya
- * Date: 2017/4/3
- * Time: 上午12:40
- */
+
 class memberController
 {
     private $request, $response, $view, $data;
@@ -19,7 +14,8 @@ class memberController
         $this->view = $data->view;
     }
 
-    function run($action){
+    function run($action)
+    {
 
         $db = getDB();
         //取得post傳入帳號密碼
@@ -28,7 +24,7 @@ class memberController
 
         $data = $db->query("INSERT INTO users (account, password)
         VALUES ($account, md5($password))")->fetchAll();
-
     }
+
 
 }
