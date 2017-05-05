@@ -6,7 +6,7 @@ require_once '../lib/helper.php';
 //develop Tools only for localhost domain allow
 
 $app->get('/test', function ($request, $response, $args) {
-    return controller('test',$this)->run('post');
+    return controller('member',$this)->run('update');
 });
 
 
@@ -76,9 +76,9 @@ $app->get('/', function ($request, $response, $args){
     return controller('home',$this)->run();
 });
 
-$app->get('/memIndex', function ($request, $response, $args) {
-    return controller('member',$this)->run();
-});
+//$app->get('/memIndex', function ($request, $response, $args) {
+//    return controller('member',$this)->run();
+//});
 
 
 
@@ -115,7 +115,24 @@ $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) 
 });
 
 //for add shop
+//ex: /api/member/add
 $app->post('/api/{kind}/{action}', function ($request, $response, $args) {
-    return controller('add',$this)->run($args);
+
+    switch ($args['kind'])
+    {
+        case "login":
+            return controller('member',$this)->run($args['action']);
+            break;
+        case "add":
+            return controller('member',$this)->run($args['action']);
+            break;
+        case "update":
+            return controller('member',$this)->run($args['action']);
+            break;
+        case "delete":
+            return controller('member',$this)->run($args['action']);
+            break;
+    }
 });
+
 

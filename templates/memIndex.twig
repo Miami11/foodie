@@ -13,27 +13,54 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        <form method="post" action=/api/shop/add" method="post">
+        <form method="post" action="/api/member/update" method="post">
             <table border="1" align="center">
                 <caption>加入會員</caption>
                 <tr>
                     <th>會員名稱</th>
                     <td>
-                        <input type="text" name="memId" value=" {% for obj in data %}
+                        <input type="text" name="name" value=" {% for obj in data %}
 {{ obj['name'] }}
                         {% endfor %}"></td>
 
                 </tr>
                 <tr>
+                    <th>會員名稱</th>
+                    <td>
+                        <input type="text" name="nickname" value=" {% for obj in data %}
+{{ obj['nickname'] }}
+                        {% endfor %}"></td>
+
+                </tr>
+                <tr>
                     <th>登入帳號</th>
-                    <td><input type="text" name="memId" value=" {% for obj in data %}
+                    <td><input type="text" name="account" value=" {% for obj in data %}
 {{ obj['account'] }}
                         {% endfor %}"></td>
                 </tr>
                 <tr>
                     <th>登入密碼</th>
-                    <td><input type="password" name="memPsw1" value=" {% for obj in data %}
+                    <td><input type="password" name="password" value=" {% for obj in data %}
 {{ obj['password'] }}
+                        {% endfor %}"></td>
+                </tr>
+                <tr>
+                    <th>電話號碼</th>
+                    <td><input type="text" name="cellPhone" value=" {% for obj in data %}
+{{ obj['cellphone'] }}
+                        {% endfor %}"></td>
+                </tr>
+                <tr>
+                    <th>地區</th>
+                    <td><input type="text" name="area" value=" {% for obj in data %}
+{{ obj['area'] }}
+                        {% endfor %}"></td>
+                </tr>
+
+                <tr>
+                    <th>生日</th>
+                    <td><input type="text" name="memBirth" value=" {% for obj in data %}
+{{ obj['birthday'] }}
                         {% endfor %}"></td>
                 </tr>
 
@@ -46,22 +73,18 @@
                 <tr>
                     <th>性別</th>
                     <td>
-                        男 <input type="radio" name="man" >
-                        女 <input type="radio" name="girl" >
+                        男 <input type="radio" name="man" value="
+ {% for obj in data %}
+{{ obj['man'] }}
+                        {% endfor %}">
+                        女 <input type="radio" name="girl" value="
+ {% for obj in data %}
+{{ obj['girl'] }}
+                        {% endfor %}" >
                     </td>
                 </tr>
-                <tr>
-                    <th>生日</th>
-                    <td><input type="text" name="memBirth" value=" {% for obj in data %}
-{{ obj['birthday'] }}
-                        {% endfor %}"></td>
-                </tr>
-                <tr>
-                    <th>電話號碼</th>
-                    <td><input type="text" name="memPhone" value=" {% for obj in data %}
-{{ obj['cellphone'] }}
-                        {% endfor %}"></td>
-                </tr>
+
+
                 <tr>
                     <td colspan="2" id="sub">
                         <input type="submit" name="confirm" value="確認修改">

@@ -15,7 +15,11 @@ class addController
 
     function run($action = "")
     {
-        $this->addInfo();
+        switch ($action){
+            case "add":
+                $this->addInfo();
+                break;
+        }
     }
 
     private function addInfo(){
@@ -31,6 +35,9 @@ class addController
 //        print_r($this->request->getParsedBody());
 //
 //        die();
+
+//        transaction 控制兩邊要同時做完
+        $db->pdo->beginTransaction();
 
         $shop_id = $this->request->getParsedBody()['shop_id'];
         $name_ch = $this->request->getParsedBody()['name_ch'];
@@ -52,12 +59,15 @@ class addController
         $sql = "INSERT INTO shops (shop_id,name_ch,name_en,image,address,phone,tags,coupon,shift,rate,create_at,update_at ,hours)
         VALUES ('$shop_id','$name_ch','$name_en','temp_image.jpg','$address','$phone','$tags','$coupon','$shift','$rate','$createTime','$updateTime','$hours')";
 
-        if($db->query($sql)){
-            echo '{"flag":"1","msg":"新增成功"}';
-        }else{
-            echo '{"flag":"0","msg":"新增失敗"}';
-        }
+        $db->query($sql);
 
+
+//        再新增到會員資料欄位
+//        if(){
+//            echo '{"flag":"1","msg":"新增成功"}';
+//        }else{
+//            echo '{"flag":"0","msg":"新增失敗"}';
+//        }
     }
 
 
