@@ -6,7 +6,7 @@ require_once '../lib/helper.php';
 //develop Tools only for localhost domain allow
 
 $app->get('/test', function ($request, $response, $args) {
-    return controller('member',$this)->run('update');
+    return controller('test',$this)->run('');
 });
 
 

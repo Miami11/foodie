@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="col-xs-12 col-sm-6">
-        <form method="post" action="/api/member/update" method="post">
+        <form method="post" action="api/member/update" method="post">
             <table border="1" align="center">
                 <caption>加入會員</caption>
                 <tr>
@@ -46,43 +46,43 @@
                 </tr>
                 <tr>
                     <th>電話號碼</th>
-                    <td><input type="text" name="cellPhone" value=" {% for obj in data %}
+                    <td><input type="text" name="cellphone" value=" {% for obj in data %}
 {{ obj['cellphone'] }}
                         {% endfor %}"></td>
                 </tr>
-                <tr>
-                    <th>地區</th>
-                    <td><input type="text" name="area" value=" {% for obj in data %}
-{{ obj['area'] }}
-                        {% endfor %}"></td>
-                </tr>
+                {#<tr>#}
+                    {#<th>地區</th>#}
+                    {#<td><input type="text" name="area" value=" {% for obj in data %}#}
+{#{{ obj['area'] }}#}
+                        {#{% endfor %}"></td>#}
+                {#</tr>#}
 
-                <tr>
-                    <th>生日</th>
-                    <td><input type="text" name="memBirth" value=" {% for obj in data %}
-{{ obj['birthday'] }}
-                        {% endfor %}"></td>
-                </tr>
+                {#<tr>#}
+                    {#<th>生日</th>#}
+                    {#<td><input type="text" name="memBirth" value=" {% for obj in data %}#}
+{#{{ obj['birthday'] }}#}
+                        {#{% endfor %}"></td>#}
+                {#</tr>#}
 
-                <tr>
-                    <th>Email</th>
-                    <td><input type="email" name="memEmail" value=" {% for obj in data %}
-{{ obj['email'] }}
-                        {% endfor %}"></td>
-                </tr>
-                <tr>
-                    <th>性別</th>
-                    <td>
-                        男 <input type="radio" name="man" value="
- {% for obj in data %}
-{{ obj['man'] }}
-                        {% endfor %}">
-                        女 <input type="radio" name="girl" value="
- {% for obj in data %}
-{{ obj['girl'] }}
-                        {% endfor %}" >
-                    </td>
-                </tr>
+                {#<tr>#}
+                    {#<th>Email</th>#}
+                    {#<td><input type="email" name="memEmail" value=" {% for obj in data %}#}
+{#{{ obj['email'] }}#}
+                        {#{% endfor %}"></td>#}
+                {#</tr>#}
+                {#<tr>#}
+                    {#<th>性別</th>#}
+                    {#<td>#}
+                        {#男 <input type="radio" name="man" value="#}
+ {#{% for obj in data %}#}
+{#{{ obj['man'] }}#}
+                        {#{% endfor %}">#}
+                        {#女 <input type="radio" name="girl" value="#}
+ {#{% for obj in data %}#}
+{#{{ obj['girl'] }}#}
+                        {#{% endfor %}" >#}
+                    {#</td>#}
+                {#</tr>#}
 
 
                 <tr>

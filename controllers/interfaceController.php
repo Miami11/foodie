@@ -18,6 +18,33 @@ class interfaceController
         //店家
         if($args['kind'] == "shop") {
             $this->shop($args);
+        }else{
+
+             $this->member($args);
+        }
+    }
+    private  function member($args =""){
+        $db = getDB();
+
+        switch ($args['action']){
+            case Action::SHOW:
+
+                $image_id =isset($args['value'])?$args['value']:'';
+
+                $result_member = $db->select("users","*",["img"=>$image_id]);
+                $result_images = $db->select("images","*",["img"=>$image_id]);
+                $result_images[0]['users'] = $result_member;
+
+                echo json_encode($result_member);
+                break;
+
+            case Action::PAGE:
+                $page = isset($args['value'])?$args['value']:'';
+                $count = 1;
+                $offset = $count * $page;
+                $result = $db->select("users",["id","name","nickname","account","password","cellphone","area","img"],["LIMIT" => [$offset,$count]]);
+                echo json_encode($result);
+                break;
         }
     }
 
@@ -49,4 +76,6 @@ class interfaceController
                 break;
         }
     }
+
+
 }

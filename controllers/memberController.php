@@ -86,7 +86,7 @@ class memberController
            "cellphone" => "$cellphone"
        ]);
 
-        if($sql){
+        if($db->query($sql)){
             echo '{"flag":"1","msg":"修改成功"}';
         }else{
             echo '{"flag":"0","msg":"修改失敗"}';
