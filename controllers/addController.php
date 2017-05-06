@@ -25,16 +25,7 @@ class addController
     private function addInfo(){
         $db = getDB();
 
-        //test
-//        var_dump($this->request->getParsedBody());
 
-//        die();
-        //取得post傳入資料
-        //        var_dump($this->request->getParsedBody());
-//
-//        print_r($this->request->getParsedBody());
-//
-//        die();
 
 //        transaction 控制兩邊要同時做完
         $db->pdo->beginTransaction();

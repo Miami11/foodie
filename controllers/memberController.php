@@ -38,7 +38,7 @@ class memberController
     function add(){
         $db = getDB();
 
-        $memname = $this->request->getParsedBody()['memname'];
+        $name = $this->request->getParsedBody()['name'];
         $nickname = $this->request->getParsedBody()['nickname'];
         $account = $this->request->getParsedBody()['account'];
         $password = $this->request->getParsedBody()['password'];
@@ -48,14 +48,16 @@ class memberController
         $birthday = $this->request->getParsedBody()['birthday'];
         $email = $this->request->getParsedBody()['email'];
         $sex = $this->request->getParsedBody()['sex'];
+        $img = $this->request->getParsedBody()['img'];
+
 //        $token = $this->request->getParsedBody()['token'];
 
         $auth="user";
-        $token = uniqid().time();
+//        $token = uniqid().time();
 
         //sql for add data
-        $sql = "INSERT INTO users ( memname,nickname,account,password,cellphone,area,auth,birthday,email,sex,token),
-        VALUE ('$memname','$nickname','$account','$password','$cellphone','$area','$auth','$birthday','$email','$sex','$token')";
+        $sql = "INSERT INTO users ( name,nickname,account,password,cellphone,area,auth,birthday,email,sex,token,img)
+        VALUES ('$name','$nickname','$account','$password','$cellphone','$area','$auth','$birthday','$email','$sex','XXX','$img')";
 
 
 
