@@ -76,8 +76,6 @@ class memberController
         $cellphone = $this->request->getParsedBody()['cellphone'];
 
 
-
-
        $sql = $db->update("users", [
             "name" => "$name",
            "nickname" => "$nickname",

@@ -117,22 +117,7 @@ $app->get('/api/{kind}/{action}/{value}', function ($request, $response, $args) 
 //for add shop
 //ex: /api/member/add
 $app->post('/api/{kind}/{action}', function ($request, $response, $args) {
-
-    switch ($args['kind'])
-    {
-        case "login":
-            return controller('member',$this)->run($args['action']);
-            break;
-        case "add":
-            return controller('member',$this)->run($args['action']);
-            break;
-        case "update":
-            return controller('member',$this)->run($args['action']);
-            break;
-        case "delete":
-            return controller('member',$this)->run($args['action']);
-            break;
-    }
+    return controller('member',$this)->run($args['action']);
 });
 
 
